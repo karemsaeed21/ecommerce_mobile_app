@@ -15,30 +15,30 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentSlider = 0;
-  int selectedIndex = 0;
-  final TextEditingController _searchController = TextEditingController();
-  List<Product> filteredProducts = all;
-  bool isAscending = true;
+  int currentSlider = 0; // for the current image slider index which is 0
+  int selectedIndex = 0; // for the selected index of the category selection which is 0 for all categories
+  final TextEditingController _searchController = TextEditingController(); // for the search controller
+  List<Product> filteredProducts = all; // for the filtered products which is all products
+  bool isAscending = true; // for the sorting order which is ascending order which is true
 
   @override
   void initState() {
     super.initState();
-    _searchController.addListener(_filterProducts);
+    _searchController.addListener(_filterProducts);// adds a listener to the search controller for filtering the products
   }
 
   void _filterProducts() {
     setState(() {
       filteredProducts = all.where((product) {
-        return product.title.toLowerCase().contains(_searchController.text.toLowerCase());
-      }).toList();
+        return product.title.toLowerCase().contains(_searchController.text.toLowerCase()); // for the search of the products based on the title of the products in lower case letters
+      }).toList(); // for the list of the filtered products based on the search
     });
   }
 
-  void _onToggleSortOrder() {
+  void _onToggleSortOrder() { // for the sorting order
     setState(() {
       isAscending = !isAscending;
-      filteredProducts.sort((a, b) => isAscending ? a.price.compareTo(b.price) : b.price.compareTo(a.price));
+      filteredProducts.sort((a, b) => isAscending ? a.price.compareTo(b.price) : b.price.compareTo(a.price)); // for sorting the products based on the price in ascending or descending order
     });
   }
 
@@ -50,50 +50,50 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<List<Product>> selectcategories = [
-      all,
-      shoes,
-      beauty,
-      womenFashion,
-      jewelry,
-      menFashion
+    List<List<Product>> selectCategories = [ // for category selection
+      all, // all products model data from product_model.dart
+      shoes, // shoes products model data from product_model.dart
+      beauty, // beauty products model data from product_model.dart
+      womenFashion, // womenFashion products model data from product_model.dart
+      jewelry, // jewelry products model data from product_model.dart
+      menFashion // menFashion products model data from product_model.dart
     ];
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
+      backgroundColor: Colors.white, // for background color
+      body: SingleChildScrollView( // for scrolling the screen vertically
+        child: Padding( // for padding from all side
+          padding: const EdgeInsets.all(20), // for padding from all side
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start, // for start the column from start
             children: [
-              const SizedBox(height: 35),
+              const SizedBox(height: 10), // for space between the widgets in column
               // for custom appbar
-              const CustomAppBar(),
-              const SizedBox(height: 20),
+              const CustomAppBar(), // CustomAppBar from home_app_bar.dart
+              const SizedBox(height: 20), // for space between the first and search bar
               // for search bar
-              CustomSearchBar(
+              CustomSearchBar( // CustomSearchBar from search_bar.dart
                 controller: _searchController,
                 onToggleSortOrder: _onToggleSortOrder,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // for space between the search bar and category selection
               ImageSlider(
-                currentSlide: currentSlider,
-                onChange: (value) {
+                currentSlide: currentSlider, // ImageSlider from image_slider.dart
+                onChange: (value) { // for changing the image slider
                   setState(
                     () {
-                      currentSlider = value;
+                      currentSlider = value; // for changing the image slider
                     },
                   );
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // for space between the image slider and category selection
               // for category selection
-              categoryItems(selectcategories),
+              categoryItems(selectCategories), // for category selection from category.dart
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 20), // for space between the category selection and shopping items
               if (selectedIndex == 0)
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const Row( // for the row of the text and see all text "Special For You" and "See all"
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // for space between first and second text
                   children: [
                     Text(
                       "Special For You",
@@ -113,21 +113,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               // for shopping items
-              const SizedBox(height: 10),
-              GridView.builder(
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
+              const SizedBox(height: 10), // for space between the text and shopping items
+              GridView.builder( // for grid view of shopping items
+                // padding: EdgeInsets.zero,
+                // physics: const NeverScrollableScrollPhysics(), // for not scrolling the grid view
+                shrinkWrap: true, // for not scrolling the grid view which means the grid view will take up only the space required by its content and no more.
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.75,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
-                itemCount: filteredProducts.length,
+                    crossAxisCount: 2, // for how many items in a one row
+                    childAspectRatio: 0.75, // for the aspect ratio of the items
+                    crossAxisSpacing: 20, // for the space between the items in a row
+                    mainAxisSpacing: 20 // for the space between the rows
+                ),
+                itemCount: filteredProducts.length, // for the number of items in the grid view now it take the number from the all products
                 itemBuilder: (context, index) {
                   return ProductCard(
-                    product: filteredProducts[index],
-                  );
+                    product: filteredProducts[index], // index used to get the product from the filtered products list form 0 to the length of the filtered products list
+                  ); // for the product card from product_cart.dart it takes the product from the filtered products
                 },
               )
             ],
@@ -137,44 +138,45 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SizedBox categoryItems(List<List<Product>> selectcategories) {
-    return SizedBox(
-      height: 130,
+  SizedBox categoryItems(List<List<Product>> selectCategories) { // for category selection
+    return SizedBox( // for the size of the category selection
+      height: 130, // for the height of the category selection
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categoriesList.length,
-        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal, // for the horizontal scrolling of the category selection
+        itemCount: categoriesList.length, // for the number of items in the category selection
+        physics: const BouncingScrollPhysics(), // for the physics of the scrolling
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
               setState(() {
-                selectedIndex = index;
-                filteredProducts = selectcategories[selectedIndex];
+                selectedIndex = index; // for the selected index of the category selection
+                filteredProducts = selectCategories[selectedIndex]; // for the filtered products of the category selection
               });
             },
             child: Container(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5), // for the padding of the category selection
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: selectedIndex == index
-                    ? Colors.blue[200]
-                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(15), // for the border radius of the category selection
+                color: selectedIndex == index // for the color of the selected category
+                    ? Colors.blue[200] // for the color of the selected category be blue
+                    : Colors.transparent, // for the color of the selected category be blue and others be transparent
               ),
-              child: Column(
+              child: Column( // for the column of the category selection items to hold the image and the title of the category
                 children: [
                   Container(
-                    height: 65,
-                    width: 65,
+                    height: 65, // for the height of the image
+                    width: 65, // for the width of the image
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      shape: BoxShape.circle, // for the shape of the image
                       image: DecorationImage(
-                          image: AssetImage(categoriesList[index].image),
-                          fit: BoxFit.cover),
+                          image: AssetImage(categoriesList[index].image), // for the image of the category
+                          fit: BoxFit.cover // for the image fit
+                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    categoriesList[index].title,
+                    categoriesList[index].title, // for the title of the category
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

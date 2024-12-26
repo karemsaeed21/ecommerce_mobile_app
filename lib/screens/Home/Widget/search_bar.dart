@@ -15,13 +15,13 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
-      width: double.infinity,
+      height: 55, // for the height of the search bar
+      width: double.infinity, // for the width of the search bar which is the width of the screen size
       decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(30),
+        color: Colors.grey[200], // for the background color of the search bar
+        borderRadius: BorderRadius.circular(30), // for the border radius of the search bar to make it round
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5), // to make space between the search bar and the text field
       child: Row(
         children: [
           const Icon(

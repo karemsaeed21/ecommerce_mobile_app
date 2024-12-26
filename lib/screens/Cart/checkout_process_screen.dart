@@ -49,10 +49,13 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout'),
+        title: const Text('Checkout', style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
+      color: Colors.white, // Set the background color here
+      padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(

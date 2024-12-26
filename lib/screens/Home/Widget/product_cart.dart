@@ -12,7 +12,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = FavoriteProvider.of(context);
 
-    return GestureDetector(
+    return GestureDetector( // to click on the item to navigate to the detail screen
       onTap: () {
         Navigator.push(
           context,
@@ -24,78 +24,78 @@ class ProductCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: double.infinity,
+            width: double.infinity, // for the width of the container to be the whole screen width
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: kcontentColor,
+              borderRadius: BorderRadius.circular(20), // the border radius for each card item
+              color: kcontentColor, // the color of the card item
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start, //
               children: [
-                const SizedBox(height: 5),
-                Center(
+                const SizedBox(height: 5), // for the space between the image and the top of the card
+                Center( // for the centering of the image
                   child: Hero(
-                    tag: product.image,
+                    tag: product.image, // to get the image from the product model
                     child: Image.asset(
                       product.image,
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.cover,
+                      width: 150, // for the width of the image
+                      height: 150, // for the height of the image
+                      fit: BoxFit.cover, // for the image fit
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10), // for the space between the image and the title
+                Padding(
+                  padding: const EdgeInsets.only(left: 10), // for the left padding of the title
+                  child: Text(
+                    product.title, // for the title of the product
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold, // for the bold of the title
+                      fontSize: 16, // for the font size of the title
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10), // for the space between the title and the price
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Text(
-                    product.title,
+                    "\$${product.price}", // for the price of the product
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontWeight: FontWeight.bold, // for the bold of the price
+                      fontSize: 17, // for the font size of the price
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5), // for the space between the price and the rate
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "\$${product.price}",
+                    "Rate: ${product.rate}", // for the rate of the product
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
+                      fontSize: 14,  // for the font size of the rate
+                      color: Colors.black45, // for the color of the rate
                     ),
                   ),
                 ),
-                const SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Rate: ${product.rate}",
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black45,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10), // for the space between the rate and the colors
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(
                     children: List.generate(
-                      product.colors.length,
+                      product.colors.length, // for the number of colors
                       (index) => Container(
-                        width: 18,
-                        height: 18,
-                        margin: const EdgeInsets.only(right: 4),
+                        width: 18, // for the width of the color
+                        height: 18, // for the height of the color
+                        margin: const EdgeInsets.only(right: 4), // for the margin between the colors
                         decoration: BoxDecoration(
-                          color: product.colors[index],
-                          shape: BoxShape.circle,
+                          color: product.colors[index], // for the color of the color
+                          shape: BoxShape.circle, // for the shape of the color
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10), // for the space between the colors and the sizes
               ],
             ),
           ),
@@ -112,16 +112,16 @@ class ProductCard extends StatelessWidget {
                     bottomLeft: Radius.circular(10),
                   ),
                 ),
-                child: GestureDetector(
+                child: GestureDetector( // to click on the favorite icon to add the product to the favorite list
                   onTap: () {
                     provider.toggleFavorite(product);
                   },
-                  child: Icon(
+                  child: Icon( // for the favorite icon
                     provider.isExist(product)
                         ? Icons.favorite
-                        : Icons.favorite_border,
-                    color: Colors.white,
-                    size: 22,
+                        : Icons.favorite_border, // for the icon of the favorite
+                    color: Colors.white, // for the color of the favorite icon
+                    size: 22, // for the size of the favorite icon
                   ),
                 ),
               ),

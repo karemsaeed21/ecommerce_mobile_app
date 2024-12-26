@@ -1,3 +1,4 @@
+// This section defines the repositories used by the entire project
 allprojects {
     repositories {
         google()
@@ -5,14 +6,27 @@ allprojects {
     }
 }
 
+// This sets the root project build directory to be outside the project folder
 rootProject.buildDir = '../build'
+
+// Configure build directory for subprojects
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(':app')
+    project.evaluationDependsOn(':app')  // Ensure ':app' is evaluated first
 }
 
+// Custom clean task to delete the build directory
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+
+// Define the classpath dependencies for the build process (AGP version)
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.0'
+    }
 }

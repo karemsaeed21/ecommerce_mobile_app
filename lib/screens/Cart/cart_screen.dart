@@ -33,24 +33,24 @@ class _CartScreenState extends State<CartScreen> {
 
     return Scaffold(
       backgroundColor: kcontentColor,
-      bottomSheet: CheckOutBox(),
+      bottomSheet: const CheckOutBox(),
       body: SafeArea(
 
           child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
+          const Padding(
+            padding: EdgeInsets.all(8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "My Cart",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
                 ),
-                const SizedBox()
+                SizedBox()
               ],
             ),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerce_mobile_app/screens/Cart/cart_screen.dart';
 import 'package:ecommerce_mobile_app/screens/Favorite/favorite.dart';
 
 import '../../constants.dart';
@@ -29,15 +28,15 @@ class Profile extends StatelessWidget {
                   bottomRight: Radius.circular(30),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage("images/profile3.png"),
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
+                  SizedBox(height: 10),
+                  Text(
                     "Winnie Vasquez",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
