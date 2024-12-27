@@ -33,11 +33,11 @@ class Profile extends StatelessWidget {
                 children: [
                   CircleAvatar( // CircleAvatar to hold the profile image
                     radius: 50,
-                    backgroundImage: AssetImage("images/profile3.png"),
+                    backgroundImage: AssetImage("images/profile.webp"),
                   ),
                   SizedBox(height: 10),
                   Text( // Text widget to hold the profile name
-                    "Winnie Vasquez",
+                    "John Doe",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
