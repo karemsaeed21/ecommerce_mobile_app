@@ -18,25 +18,25 @@ class Profile extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            Container( // container to hold the profile image and name
               height: size.height * 0.3,
-              width: double.infinity,
+              width: double.infinity, // This makes the container take the full width of the screen
               decoration: const BoxDecoration(
-                color: kprimaryColor,
+                color: kprimaryColor, // This gives the container a color
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30), // This gives the container rounded corners
+                  bottomRight: Radius.circular(30), // This gives the container rounded corners
                 ),
               ),
-              child: const Column(
+              child: const Column( // Column to hold the profile image and name
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(
+                  CircleAvatar( // CircleAvatar to hold the profile image
                     radius: 50,
                     backgroundImage: AssetImage("images/profile3.png"),
                   ),
                   SizedBox(height: 10),
-                  Text(
+                  Text( // Text widget to hold the profile name
                     "Winnie Vasquez",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -47,38 +47,21 @@ class Profile extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+            const SizedBox(height: 20), // SizedBox to add space between the profile image and the list items
+            Padding( // Padding to add padding to the list items
+              padding: const EdgeInsets.symmetric(horizontal: 20), // This adds padding to the left and right of the list items
               child: Column(
                 children: [
-                  // Card(
-                  //   shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.circular(15),
-                  //   ),
-                  //   child: ListTile(
-                  //     leading: const Icon(Icons.shopping_cart, color: kprimaryColor),
-                  //     title: const Text("My Orders"),
-                  //     trailing: const Icon(Icons.arrow_forward_ios),
-                  //     onTap: () {
-                  //       Navigator.of(context).push(
-                  //         MaterialPageRoute(
-                  //           builder: (context) => const CartScreen(),
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
-                  // ),
                   const SizedBox(height: 10),
                   Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: ListTile(
-                      leading: const Icon(Icons.favorite, color: kprimaryColor),
-                      title: const Text("Wishlist"),
-                      trailing: const Icon(Icons.arrow_forward_ios),
-                      onTap: () {
+                      leading: const Icon(Icons.favorite, color: kprimaryColor), // Icon widget to hold the icon in the first list item
+                      title: const Text("Wishlist"), // Text widget to hold the text in the first list item
+                      trailing: const Icon(Icons.arrow_forward_ios), // Icon widget to hold the icon in the first list item
+                      onTap: () { // This function is called when the list item is tapped
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => const Favorite(),

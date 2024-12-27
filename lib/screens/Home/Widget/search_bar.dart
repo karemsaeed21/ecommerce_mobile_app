@@ -44,7 +44,7 @@ class CustomSearchBar extends StatelessWidget {
             height: 25,
             width: 1.5,
             color: Colors.grey,
-          ),
+          ), // for the vertical line between the search bar and the sort icon
           IconButton(
             onPressed: onToggleSortOrder,
             icon: const Icon(

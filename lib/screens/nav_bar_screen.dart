@@ -46,7 +46,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         color: Colors.white,  // to set the color of the bottom navigation bar
         shape: const CircularNotchedRectangle(), // to set the shape of the bottom navigation bar to be circular for home button
         notchMargin: 10, // to set the margin of the bottom navigation bar from the floating action button
-        // clipBehavior: Clip.antiAliasWithSaveLayer,  // to set the clip behavior of the bottom navigation bar
+        clipBehavior: Clip.antiAliasWithSaveLayer,  // to set the clip behavior of the bottom navigation bar
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

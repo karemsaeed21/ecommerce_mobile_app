@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
           ),
         );
       },
-      child: Stack(
+      child: Stack( // for the stack of the card item and the favorite icon on the top right of the card item
         children: [
           Container(
             width: double.infinity, // for the width of the container to be the whole screen width
