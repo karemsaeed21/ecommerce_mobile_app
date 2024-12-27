@@ -100,7 +100,7 @@ class _FavoriteState extends State<Favorite> {
                             },
                             child: const Icon(
                               Icons.delete,
-                              color: Colors.red,
+                              color: kprimaryColor,
                               size: 25,
                             ),
                           ),

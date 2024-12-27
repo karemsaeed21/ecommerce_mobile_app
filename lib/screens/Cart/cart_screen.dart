@@ -128,11 +128,13 @@ class _CartScreenState extends State<CartScreen> {
                             onPressed: () {
                               // for remove ites for cart
                               finalList.removeAt(index);
+                              provider.totalPrice(); // Update the total price
+                              provider.notifyListeners(); // Notify listeners to trigger a rebuild
                               setState(() {});
                             },
                             icon: const Icon(
                               Icons.delete,
-                              color: Colors.red,
+                              color: kprimaryColor,
                               size: 20,
                             ),
                           ),

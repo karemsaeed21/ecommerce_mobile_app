@@ -32,7 +32,7 @@ class ProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, //
               children: [
-                const SizedBox(height: 5), // for the space between the image and the top of the card
+                const SizedBox(height: 10), // for the space between the image and the top of the card
                 Center( // for the centering of the image
                   child: Hero(
                     tag: product.image, // to get the image from the product model
@@ -44,7 +44,7 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // for the space between the image and the title
+                const SizedBox(height: 5), // for the space between the image and the title
                 Padding(
                   padding: const EdgeInsets.only(left: 10), // for the left padding of the title
                   child: Text(
@@ -55,62 +55,62 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // for the space between the title and the price
+                const SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Text(
-                    "\$${product.price}", // for the price of the product
+                    "${product.description.substring(0, 60)}...", // for the rate of the product
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold, // for the bold of the price
-                      fontSize: 17, // for the font size of the price
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 5), // for the space between the price and the rate
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "Rate: ${product.rate}", // for the rate of the product
-                    style: const TextStyle(
-                      fontSize: 14,  // for the font size of the rate
+                      fontSize: 13,  // for the font size of the rate
                       color: Colors.black45, // for the color of the rate
                     ),
                   ),
                 ),
-                const SizedBox(height: 10), // for the space between the rate and the colors
+                const SizedBox(height: 15), // for the space between the title and the price
                 Padding(
-                  padding: const EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 10 , right: 15), // for the padding of the price
                   child: Row(
-                    children: List.generate(
-                      product.colors.length, // for the number of colors
-                      (index) => Container(
-                        width: 18, // for the width of the color
-                        height: 18, // for the height of the color
-                        margin: const EdgeInsets.only(right: 4), // for the margin between the colors
-                        decoration: BoxDecoration(
-                          color: product.colors[index], // for the color of the color
-                          shape: BoxShape.circle, // for the shape of the color
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, // for space between first and second text
+                    children: [
+                      Text(
+                        "\$${product.price}", // for the price of the product
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold, // for the bold of the price
+                          fontSize: 17, // for the font size of the price
                         ),
                       ),
+                    Row(
+                    children: [
+                    Icon( // for the icon of the rate
+                      Icons.star, // for the icon of the rate
+                      color: Colors.yellow[700], // for the color of the rate
+                      size: 20, // for the size of the rate
                     ),
-                  ),
+                    Text(
+                      "${product.rate}", // for the rating of the product
+                      style: const TextStyle(
+                        fontSize: 15, // for the font size of the rating
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,// for the color of the rating
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 10), // for the space between the colors and the sizes
+                    ],
+                  ),
+                )
               ],
             ),
           ),
-          Positioned(
+          Positioned( //
             child: Align(
               alignment: Alignment.topRight,
               child: Container(
-                height: 40,
-                width: 40,
+                height: 60,
+                width: 60,
                 decoration: const BoxDecoration(
-                  color: kprimaryColor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    bottomLeft: Radius.circular(10),
-                  ),
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.all( Radius.circular(500)),
                 ),
                 child: GestureDetector( // to click on the favorite icon to add the product to the favorite list
                   onTap: () {
@@ -120,7 +120,7 @@ class ProductCard extends StatelessWidget {
                     provider.isExist(product)
                         ? Icons.favorite
                         : Icons.favorite_border, // for the icon of the favorite
-                    color: Colors.white, // for the color of the favorite icon
+                    color: kprimaryColor, // for the color of the favorite icon
                     size: 22, // for the size of the favorite icon
                   ),
                 ),

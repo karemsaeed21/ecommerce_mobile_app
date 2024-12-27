@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce_mobile_app/constants.dart';
 import 'package:provider/provider.dart';
+import '../nav_bar_screen.dart';
 
 import '../../Provider/add_to_cart_provider.dart';
+import '../Home/home_screen.dart';
 
 class CheckoutProcessScreen extends StatefulWidget {
   const CheckoutProcessScreen({super.key});
@@ -27,6 +29,7 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
+          backgroundColor: Colors.white,
           title: const Text('Order Placed'),
           content: Text(
             'Your order has been placed successfully!\nOn the way. Your order will arrive in 2-3 hours\nPayment Method: ${_payOnReceive ? "Pay on Receive" : "Online Payment"}',
@@ -35,7 +38,10 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
             TextButton(
               onPressed: () {
                 Navigator.of(ctx).pop();
-                Navigator.of(context).pop();
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const BottomNavBar()),
+                      (Route<dynamic> route) => false,
+                );
               },
               child: const Text('OK'),
             ),
@@ -148,3 +154,4 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
     );
   }
 }
+

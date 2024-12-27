@@ -22,7 +22,7 @@ class Product {
       required this.seller,
       required this.category,
       required this.rate,
-      required this.quantity});
+      this.quantity = 1});
 }
 
 final List<Product> all = [
@@ -310,7 +310,7 @@ final List<Product> beauty = [
     title: "Skin-Care Product",
     description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec massa sapien faucibus et molestie ac feugiat. In massa tempor nec feugiat nisl. Libero id faucibus nisl tincidunt.",
-    image: "images/beauty/perfume.png",
+    image: "images/beauty/skin-care.png",
     price: 999,
     seller: "Mr Beast",
     colors: [
