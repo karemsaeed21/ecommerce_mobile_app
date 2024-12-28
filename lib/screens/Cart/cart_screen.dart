@@ -11,15 +11,40 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final TextEditingController _discountController = TextEditingController();
-  double _discount = 0.0;
-
+  final TextEditingController _discountController = TextEditingController(); // Text controller for discount
+  double _discount = 0.0; // Discount value
   void _applyDiscount() {
     if (_discountController.text == 'DIS50') {
       setState(() {
         _discount = 0.5;
       });
-    } else {
+    }
+    else if(_discountController.text == 'ASTERISK'){
+      setState(() {
+        _discount = 0.8;
+      });
+    }
+    else if(_discountController.text == 'DIS40'){
+      setState(() {
+        _discount = 0.4;
+      });
+    }
+    else if(_discountController.text == 'DIS30'){
+      setState(() {
+        _discount = 0.3;
+      });
+    }
+    else if(_discountController.text == 'DIS20'){
+      setState(() {
+        _discount = 0.2;
+      });
+    }
+    else if(_discountController.text == 'DIS10'){
+      setState(() {
+        _discount = 0.1;
+      });
+    }
+    else {
       setState(() {
         _discount = 0.0;
       });
