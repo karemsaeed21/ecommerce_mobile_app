@@ -94,7 +94,7 @@ class _CartScreenState extends State<CartScreen> {
               child: ListView.builder(
                 itemCount: finalList.length,
                 itemBuilder: (context, index) {
-                  final cartItems = finalList[index];
+                  final cartItems = finalList[index]; // Get the product at the index
                   return Stack(
                     children: [
                       Padding(
@@ -108,7 +108,7 @@ class _CartScreenState extends State<CartScreen> {
                           padding: const EdgeInsets.all(20),
                           child: Row(
                             children: [
-                              Container(
+                              Container( // to hold the image
                                 height: 100,
                                 width: 90,
                                 decoration: BoxDecoration(
@@ -298,6 +298,7 @@ class _CartScreenState extends State<CartScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: provider.cart.isEmpty ? Colors.grey : kprimaryColor,
                       minimumSize: const Size(double.infinity, 55),
+                      // elevation: 10,
                     ),
                     onPressed: provider.cart.isEmpty
                         ? null

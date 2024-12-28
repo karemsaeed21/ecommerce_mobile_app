@@ -14,7 +14,7 @@ class CheckoutProcessScreen extends StatefulWidget {
 }
 
 class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>(); // Form key to validate the form fields
   final _firstNameController = TextEditingController();
   final _secondNameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
@@ -55,9 +55,10 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout', style: TextStyle(color: Colors.black)),
+        title: const Text('Checkout', style: TextStyle(color: Colors.black , fontSize: 25)),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
+        centerTitle: true,
       ),
       body: Container(
       color: Colors.white, // Set the background color here
@@ -73,7 +74,7 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter your first name';
                   }
                   return null;
@@ -87,7 +88,7 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter your second name';
                   }
                   return null;
@@ -101,7 +102,7 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter your phone number';
                   }
                   return null;
@@ -115,7 +116,7 @@ class _CheckoutProcessScreenState extends State<CheckoutProcessScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (value!.isEmpty) {
                     return 'Please enter your address';
                   }
                   return null;
