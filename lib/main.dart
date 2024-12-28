@@ -15,15 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiProvider(
         providers: [
-          // for add to cart
+          // instance for add to cart which is responsible for managing the state related to the shopping cart
           ChangeNotifierProvider(create: (_) => CartProvider()),
-          // for favorite
+          // instance for favorite which manages the state related to the user's favorite items
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            textTheme: GoogleFonts.mulishTextTheme(),
+            textTheme: GoogleFonts.mulishTextTheme(), // use google fonts
           ),
           home: const BottomNavBar(),
         ),

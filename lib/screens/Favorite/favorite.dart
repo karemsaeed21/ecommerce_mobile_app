@@ -21,7 +21,7 @@ class _FavoriteState extends State<Favorite> {
         backgroundColor: kcontentColor,
         title: const Text(
           "Favorite",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
       ),

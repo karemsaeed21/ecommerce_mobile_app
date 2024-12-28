@@ -110,7 +110,6 @@ class ProductCard extends StatelessWidget {
                 width: 60,
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
-                  borderRadius: BorderRadius.all( Radius.circular(500)),
                 ),
                 child: GestureDetector( // to click on the favorite icon to add the product to the favorite list
                   onTap: () {

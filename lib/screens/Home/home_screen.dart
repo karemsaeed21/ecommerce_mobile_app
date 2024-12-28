@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15), // for the border radius of the category selection
                 color: selectedIndex == index // for the color of the selected category
-                    ? Colors.blue[200] // for the color of the selected category be blue
+                    ? Colors.blue[200]  // for the color of the selected category be blue
                     : Colors.transparent, // for the color of the selected ca5tegory be blue and others be transparent
               ),
               child: Column( // for the column of the category selection items to hold the image and the title of the category

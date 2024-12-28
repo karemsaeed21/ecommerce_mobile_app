@@ -8,12 +8,13 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size; // This gets the size of the screen
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text('Profile' , style: TextStyle(color: Colors.black , fontSize: 25)), // Text widget to hold the title of the app bar
         backgroundColor: kprimaryColor,
-        automaticallyImplyLeading: true, // This ensures the back button is shown
+        centerTitle: true, // This centers the title of the app bar
+        // automaticallyImplyLeading: true, // This ensures the back button is shown
       ),
       body: SingleChildScrollView(
         child: Column(
