@@ -102,7 +102,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
-          Positioned( //
+          Positioned( // Favorite icon position
             child: Align(
               alignment: Alignment.topRight,
               child: Container(

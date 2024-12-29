@@ -6,7 +6,7 @@ import '../models/product_model.dart';
 class CartProvider extends ChangeNotifier {
   final List<Product> _cart = [];
   List<Product> get cart => _cart;
-  void toogleFavorite(Product product) {
+  void toogleCart(Product product) {
     final index = _cart.indexWhere((element) => element.title == product.title); // Check if the product is already in the cart if it is, return the index of the product if not return -1
     if (index != -1) {
       _cart[index].quantity++; // If the product is already in the cart, increment the quantity of the product

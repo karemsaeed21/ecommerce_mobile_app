@@ -21,6 +21,15 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Product> filteredProducts = all; // for the filtered products which is all products
   bool isAscending = true; // for the sorting order which is ascending order which is true
 
+  List<List<Product>> selectCategories = [ // for category selection
+    all, // all products model data from product_model.dart
+    shoes, // shoes products model data from product_model.dart
+    beauty, // beauty products model data from product_model.dart
+    womenFashion, // womenFashion products model data from product_model.dart
+    jewelry, // jewelry products model data from product_model.dart
+    menFashion // menFashion products model data from product_model.dart
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -29,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _filterProducts() {
     setState(() {
-      filteredProducts = all.where((product) {
-        return product.title.toLowerCase().contains(_searchController.text.toLowerCase()); // for the search of the products based on the title of the products in lower case letters
-      }).toList(); // for the list of the filtered products based on the search
-    });
+      filteredProducts = selectCategories[selectedIndex].where((product) {
+        return product.title.toLowerCase().contains(_searchController.text.toLowerCase());
+      }).toList();
+    }); // it check if there is any product that contains the search text in the title and add it to the filtered products list
   }
 
   void _onToggleSortOrder() { // for the sorting order
@@ -43,21 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void dispose() {
+  void dispose() { // for disposing the search controller because if we don't dispose it will cause memory leak
     _searchController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    List<List<Product>> selectCategories = [ // for category selection
-      all, // all products model data from product_model.dart
-      shoes, // shoes products model data from product_model.dart
-      beauty, // beauty products model data from product_model.dart
-      womenFashion, // womenFashion products model data from product_model.dart
-      jewelry, // jewelry products model data from product_model.dart
-      menFashion // menFashion products model data from product_model.dart
-    ];
     return Scaffold(
       backgroundColor: Colors.white, // for background color
       body: SingleChildScrollView( // for scrolling the screen vertically

@@ -16,19 +16,19 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  int currentImage = 0;
-  int currentColor = 1;
+  int currentImage = 0; // for the current image index which is 0
+  int currentColor = 0; // for the current color index which is 0
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kcontentColor,
+      backgroundColor: kcontentColor, // for the background color of the detail screen
       // for add to cart , icon and quantity
-      floatingActionButton: AddToCart(product: widget.product),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: AddToCart(product: widget.product), // for the floating action button to add the product to the cart
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // to center the floating action button
       body: SafeArea(
-          child: SingleChildScrollView(
+          child: SingleChildScrollView( // to make the screen scrollable
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start, // for the alignment of the column to the start
           children: [
             // for back button share and favorite,
             DetailAppBar(product: widget.product,),
@@ -41,33 +41,11 @@ class _DetailScreenState extends State<DetailScreen> {
                 });
               },
             ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                5,
-                (index) => AnimatedContainer(
-                  duration: const Duration(microseconds: 300),
-                  width: currentImage == index ? 15 : 8,
-                  height: 8,
-                  margin: const EdgeInsets.only(right: 3),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: currentImage == index
-                        ? Colors.black
-                        : Colors.transparent,
-                    border: Border.all(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
             Container(
-              width: double.infinity,
+              width: double.infinity, // for the width of the container to be the whole screen width
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Colors.white, // for the color of the container
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(40),
                   topLeft: Radius.circular(40),
@@ -92,8 +70,8 @@ class _DetailScreenState extends State<DetailScreen> {
                   const SizedBox(height: 20),
                   Row(
                     children: List.generate(
-                      widget.product.colors.length,
-                      (index) => GestureDetector(
+                      widget.product.colors.length, // for the length of the colors
+                      (index) => GestureDetector( // to click on the color to change the color of the product
                         onTap: () {
                           setState(() {
                             currentColor = index;

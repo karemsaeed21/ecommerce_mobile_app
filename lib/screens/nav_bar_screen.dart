@@ -2,7 +2,6 @@ import 'package:ecommerce_mobile_app/constants.dart';
 import 'package:ecommerce_mobile_app/screens/Cart/cart_screen.dart';
 import 'package:ecommerce_mobile_app/screens/Home/home_screen.dart';
 import 'package:ecommerce_mobile_app/screens/Profile/profile.dart';
-
 import 'package:flutter/material.dart';
 import 'Favorite/favorite.dart';
 
@@ -41,12 +40,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // to set the location of the floating action button
       bottomNavigationBar: BottomAppBar(
-        // elevation: 100,
         height: 60, // to set the height of the bottom navigation bar
         color: Colors.white,  // to set the color of the bottom navigation bar
         shape: const CircularNotchedRectangle(), // to set the shape of the bottom navigation bar to be circular for home button
         notchMargin: 10, // to set the margin of the bottom navigation bar from the floating action button
-        clipBehavior: Clip.antiAliasWithSaveLayer,  // to set the clip behavior of the bottom navigation bar
+        // clipBehavior: Clip.antiAliasWithSaveLayer,  // to set the clip behavior of the bottom navigation bar
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
